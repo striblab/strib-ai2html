@@ -1,5 +1,5 @@
 {
-  "name": "strib-ai2html",
+  "name": "@striblab/strib-ai2html",
   "version": "0.0.1",
   "description": "Helpful instructions, setup, and config for using ai2html",
   "main": "lib/index.js",
@@ -23,9 +23,11 @@
   },
   "homepage": "https://github.com/striblab/strib-ai2html#readme",
   "dependencies": {
+    "console.table": "^0.10.0",
     "debug": "^4.0.1",
     "font-manager": "^0.3.0",
     "json5": "^2.0.1",
+    "lodash": "^4.17.11",
     "request": "^2.88.0",
     "yargs": "^12.0.2"
   }

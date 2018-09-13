@@ -31,7 +31,7 @@ exports.builder = yargs => {
   return yargs;
 };
 
-// Migrate
+// Main function
 exports.handler = async argv => {
   // TODO
   await generate(argv);

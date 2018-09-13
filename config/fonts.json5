@@ -1,143 +1,163 @@
-{
+[
   // Describes how fonts are associted between the web and AI.
   // http://ai2html.org/#using-fonts-other-than-arial-and-georgia
   //
-  // There are two methods to get the font associatsions:
-  //
-  //   * Platform/OS: This is the preferred way, but assumes
-  //       the fonts have been installed a specific way
-  //
-  //   * Other ID?: This is for custom font associations, but
-  //       managed here.
-  platforms: {
-    // See https://nodejs.org/api/os.html#os_os_platform
-    darwin: [
-      {
-        aifont: "BentonSans-Regular",
-        family: "'Benton Sans',arial,helvetica,sans-serif",
-        weight: "400",
-        style: ""
-      },
-      {
-        aifont: "BentonSans-Italic",
-        family: "'Benton Sans',arial,helvetica,sans-serif",
-        weight: "400",
-        style: "italic"
-      },
-      {
-        aifont: "BentonSans-Bold",
-        family: "'Benton Sans',arial,helvetica,sans-serif",
-        weight: "bold",
-        style: ""
-      },
-      {
-        aifont: "BentonSansCondensed-Medium",
-        family: "'Benton Sans Condensed Medium',arial,helvetica,sans-serif",
-        weight: "400",
-        style: ""
-      },
-      {
-        aifont: "Popular-Regular",
-        family: "'Popular',Helvetica,Arial,sans-serif",
-        weight: "400",
-        style: ""
-      },
-      {
-        aifont: "Popular-Bold",
-        family: "'Popular',Helvetica,Arial,sans-serif",
-        weight: "bold",
-        style: ""
-      },
-      {
-        aifont: "Popular-Light",
-        family: "'Popular Light',Helvetica,Arial,sans-serif",
-        weight: "300",
-        style: ""
-      },
-      {
-        aifont: "Popular-Medium",
-        family: "'Popular Medium',Helvetica,Arial,sans-serif",
-        weight: "400",
-        style: ""
-      },
-      {
-        aifont: "PoynterSerifRE-Regular",
-        family: "'Poynter Serif RE',Georgia,Times,serif",
-        weight: "400",
-        style: ""
-      },
-      {
-        aifont: "PoynterSerifRE-Italic",
-        family: "'Poynter Serif RE',Georgia,Times,serif",
-        weight: "400",
-        style: "italic"
-      },
-      {
-        aifont: "PoynterSerifRE-Bold",
-        family: "'Poynter Serif RE',Georgia,Times,serif",
-        weight: "bold",
-        style: ""
-      },
-      {
-        aifont: "PoynterSerifRE-BoldItalic",
-        family: "'Poynter Serif RE',Georgia,Times,serif",
-        weight: "bold",
-        style: "italic"
-      },
-      {
-        aifont: "WhitmanDisplay-Regular",
-        family: "'Whitman Display',Georgia,Times,serif",
-        weight: "400",
-        style: ""
-      },
-      {
-        aifont: "WhitmanDisplay-Italic",
-        family: "'Whitman Display',Georgia,Times,serif",
-        weight: "400",
-        style: "italic"
-      },
-      {
-        aifont: "WhitmanDisplay-Bold",
-        family: "'Whitman Display',Georgia,Times,serif",
-        weight: "bold",
-        style: ""
-      },
-      {
-        aifont: "WhitmanDisplayCondensed-Bold",
-        family: "'Whitman Display Condensed Bold',Georgia,Times,serif",
-        weight: "400",
-        style: ""
-      },
-      {
-        aifont: "WhitmanDisplayCompressed-Bold",
-        family: "'Whitman Display Compressed Bold',Georgia,Times,serif",
-        weight: "400",
-        style: ""
-      },
-      {
-        aifont: "Whitman-RomanOsF",
-        family: "'Whitman OSF',Georgia,Times,serif",
-        weight: "400",
-        style: ""
-      },
-      {
-        aifont: "OpenSans",
-        family: "'Open Sans',Helvetica,Arial,sans-serif",
-        weight: "400",
-        style: ""
-      },
-      {
-        aifont: "OpenSans-Light",
-        family: "'Open Sans Light',Helvetica,Arial,sans-serif",
-        weight: "300",
-        style: ""
-      },
-      {
-        aifont: "OpenSans-Bold",
-        family: "'Open Sans',Helvetica,Arial,sans-serif",
-        weight: "bold",
-        style: ""
-      }
-    ]
+  // The main issue here is that some people have old font files
+  // where the postScript names are different, so Illustrator
+  // knows the font differently, so there is some redundancy here.
+  {
+    // For reference and display
+    name: "Benton Sans regular",
+
+    // The system search should be a regular expression that will
+    // catch the various fonts in the system
+    system_search: "^benton.*sans.*regular$",
+
+    // Known names of this font, for a more broard stroke approach
+    known_postscript_names: ["BentonSans-Regular"],
+
+    // The rest are the CSS properties that this should refer to
+    family: "'Benton Sans',arial,helvetica,sans-serif",
+    weight: "400",
+    style: ""
+  },
+  {
+    name: "Benton Sans italic",
+    system_search: "^benton.*sans.*italic$",
+    known_postscript_names: ["BentonSans-Italic"],
+    family: "'Benton Sans',arial,helvetica,sans-serif",
+    weight: "400",
+    style: "italic"
+  },
+  {
+    name: "Benton Sans bold",
+    system_search: "^benton.*sans.*bold$",
+    known_postscript_names: ["BentonSans-Bold"],
+    family: "'Benton Sans',arial,helvetica,sans-serif",
+    weight: "bold",
+    style: ""
+  },
+  {
+    name: "Benton Sans Condensed medium",
+    system_search: "^benton.*sans.*conden.*medium$",
+    known_postscript_names: ["BentonSansCondensed-Medium"],
+    family: "'Benton Sans Condensed Medium',arial,helvetica,sans-serif",
+    weight: "400",
+    style: ""
+  },
+  {
+    name: "Popular regular",
+    system_search: "^popular.*regular$",
+    known_postscript_names: ["Popular-Regular", "PopulistDisplay-Regular"],
+    family: "'Popular',Helvetica,Arial,sans-serif",
+    weight: "400",
+    style: ""
+  },
+  {
+    name: "Popular bold",
+    system_search: "^popular.*bold$",
+    known_postscript_names: ["Popular-Bold", "PopulistDisplay-Bold"],
+    family: "'Popular',Helvetica,Arial,sans-serif",
+    weight: "bold",
+    style: ""
+  },
+  {
+    name: "Popular light",
+    system_search: "^popular.*bold$",
+    known_postscript_names: ["Popular-light", "PopulistDisplay-Light"],
+    family: "'Popular Light',Helvetica,Arial,sans-serif",
+    weight: "300",
+    style: ""
+  },
+  {
+    name: "Popular medium",
+    system_search: "^popular.*medium$",
+    known_postscript_names: ["Popular-Medium", "PopulistDisplay-Medium"],
+    family: "'Popular Medium',Helvetica,Arial,sans-serif",
+    weight: "400",
+    style: ""
+  },
+  {
+    name: "Poynter Serif regular",
+    system_search: "^zzzzz$",
+    known_postscript_names: [
+      "PoynterSerifRE-Regular",
+      "PoynterOSTextOneL-Roman"
+    ],
+    family: "'Poynter Serif RE',Georgia,Times,serif",
+    weight: "400",
+    style: ""
+  },
+  {
+    aifont: "PoynterSerifRE-Italic",
+    family: "'Poynter Serif RE',Georgia,Times,serif",
+    weight: "400",
+    style: "italic"
+  },
+  {
+    aifont: "PoynterSerifRE-Bold",
+    family: "'Poynter Serif RE',Georgia,Times,serif",
+    weight: "bold",
+    style: ""
+  },
+  {
+    aifont: "PoynterSerifRE-BoldItalic",
+    family: "'Poynter Serif RE',Georgia,Times,serif",
+    weight: "bold",
+    style: "italic"
+  },
+  {
+    aifont: "WhitmanDisplay-Regular",
+    family: "'Whitman Display',Georgia,Times,serif",
+    weight: "400",
+    style: ""
+  },
+  {
+    aifont: "WhitmanDisplay-Italic",
+    family: "'Whitman Display',Georgia,Times,serif",
+    weight: "400",
+    style: "italic"
+  },
+  {
+    aifont: "WhitmanDisplay-Bold",
+    family: "'Whitman Display',Georgia,Times,serif",
+    weight: "bold",
+    style: ""
+  },
+  {
+    aifont: "WhitmanDisplayCondensed-Bold",
+    family: "'Whitman Display Condensed Bold',Georgia,Times,serif",
+    weight: "400",
+    style: ""
+  },
+  {
+    aifont: "WhitmanDisplayCompressed-Bold",
+    family: "'Whitman Display Compressed Bold',Georgia,Times,serif",
+    weight: "400",
+    style: ""
+  },
+  {
+    aifont: "Whitman-RomanOsF",
+    family: "'Whitman OSF',Georgia,Times,serif",
+    weight: "400",
+    style: ""
+  },
+  {
+    aifont: "OpenSans",
+    family: "'Open Sans',Helvetica,Arial,sans-serif",
+    weight: "400",
+    style: ""
+  },
+  {
+    aifont: "OpenSans-Light",
+    family: "'Open Sans Light',Helvetica,Arial,sans-serif",
+    weight: "300",
+    style: ""
+  },
+  {
+    aifont: "OpenSans-Bold",
+    family: "'Open Sans',Helvetica,Arial,sans-serif",
+    weight: "bold",
+    style: ""
   }
-}
+]
