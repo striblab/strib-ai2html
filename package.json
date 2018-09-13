@@ -1,0 +1,32 @@
+{
+  "name": "strib-ai2html",
+  "version": "0.0.1",
+  "description": "Helpful instructions, setup, and config for using ai2html",
+  "main": "lib/index.js",
+  "bin": {
+    "strib-ai2html": "bin/strib-ai2html.js"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/striblab/strib-ai2html.git"
+  },
+  "author": "Alan Palazzolo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/striblab/strib-ai2html/issues"
+  },
+  "homepage": "https://github.com/striblab/strib-ai2html#readme",
+  "dependencies": {
+    "debug": "^4.0.1",
+    "font-manager": "^0.3.0",
+    "json5": "^2.0.1",
+    "request": "^2.88.0",
+    "yargs": "^12.0.2"
+  }
+}
