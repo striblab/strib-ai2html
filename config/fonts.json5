@@ -79,7 +79,7 @@
   },
   {
     name: "Poynter Serif regular",
-    system_search: "^zzzzz$",
+    system_search: "^poynter.*(serif|os).*(regular|roman)$",
     known_postscript_names: [
       "PoynterSerifRE-Regular",
       "PoynterOSTextOneL-Roman"
@@ -89,73 +89,110 @@
     style: ""
   },
   {
-    aifont: "PoynterSerifRE-Italic",
+    name: "Poynter Serif italic",
+    system_search: "^poynter.*(serif|os).*[^d]italic$",
+    known_postscript_names: [
+      "PoynterSerifRE-Italic",
+      "PoynterOSTextOneL-Italic"
+    ],
     family: "'Poynter Serif RE',Georgia,Times,serif",
     weight: "400",
     style: "italic"
   },
   {
-    aifont: "PoynterSerifRE-Bold",
+    name: "Poynter Serif bold",
+    system_search: "^poynter.*(serif|os).*[^c]bold$",
+    known_postscript_names: ["PoynterSerifRE-Bold", "PoynterOSTextOneL-Bold"],
     family: "'Poynter Serif RE',Georgia,Times,serif",
     weight: "bold",
     style: ""
   },
   {
+    name: "Poynter Serif bold italic",
+    system_search: "^poynter.*(serif|os).*bold.*italic$",
+    known_postscript_names: [
+      "PoynterSerifRE-BoldItalic",
+      "PoynterOSTextOneL-BoldItalic"
+    ],
     aifont: "PoynterSerifRE-BoldItalic",
     family: "'Poynter Serif RE',Georgia,Times,serif",
     weight: "bold",
     style: "italic"
   },
   {
-    aifont: "WhitmanDisplay-Regular",
+    name: "Whitman Display regular",
+    system_search: "^whitman.*display[-_\\s]*regular$",
+    known_postscript_names: ["WhitmanDisplay-Regular"],
     family: "'Whitman Display',Georgia,Times,serif",
     weight: "400",
     style: ""
   },
   {
-    aifont: "WhitmanDisplay-Italic",
+    name: "Whitman Display italic",
+    system_search: "^whitman.*display[-_\\s]*italic$",
+    known_postscript_names: ["WhitmanDisplay-Italic"],
     family: "'Whitman Display',Georgia,Times,serif",
     weight: "400",
     style: "italic"
   },
   {
-    aifont: "WhitmanDisplay-Bold",
+    name: "Whitman Display bold",
+    system_search: "^whitman.*display[-_\\s]*bold$",
+    known_postscript_names: ["WhitmanDisplay-Bold"],
     family: "'Whitman Display',Georgia,Times,serif",
     weight: "bold",
     style: ""
   },
   {
-    aifont: "WhitmanDisplayCondensed-Bold",
+    name: "Whitman Display Condensed bold",
+    system_search: "^whitman.*display.*cond.*bold$",
+    known_postscript_names: [
+      "WhitmanDisplayCondensed-Bold",
+      "WhitmanDisplayCond-Bold"
+    ],
     family: "'Whitman Display Condensed Bold',Georgia,Times,serif",
     weight: "400",
     style: ""
   },
   {
-    aifont: "WhitmanDisplayCompressed-Bold",
+    name: "Whitman Display Compressed bold",
+    system_search: "^whitman.*display.*comp.*bold$",
+    known_postscript_names: [
+      "WhitmanDisplayCompressed-Bold",
+      "WhitmanDisplayComp-Bold"
+    ],
     family: "'Whitman Display Compressed Bold',Georgia,Times,serif",
     weight: "400",
     style: ""
   },
   {
-    aifont: "Whitman-RomanOsF",
+    name: "Whitman Roman OSF",
+    system_search: "^whitman.*roman.*osf$",
+    known_postscript_names: ["Whitman-RomanOsF"],
     family: "'Whitman OSF',Georgia,Times,serif",
     weight: "400",
     style: ""
   },
   {
-    aifont: "OpenSans",
+    name: "Open Sans regular",
+    system_search: "^open.*sans.*regular$",
+    known_postscript_names: ["OpenSans", "OpenSans-Regular"],
     family: "'Open Sans',Helvetica,Arial,sans-serif",
     weight: "400",
     style: ""
   },
   {
-    aifont: "OpenSans-Light",
+    name: "Open Sans light",
+    system_search: "^open.*sans.*light$",
+    known_postscript_names: ["OpenSans-Light"],
     family: "'Open Sans Light',Helvetica,Arial,sans-serif",
     weight: "300",
     style: ""
   },
   {
-    aifont: "OpenSans-Bold",
+    name: "Open Sans bold",
+    system_search: "^open.*sans.*bold$",
+    known_postscript_names: ["OpenSans-Bold"],
     family: "'Open Sans',Helvetica,Arial,sans-serif",
     weight: "bold",
     style: ""

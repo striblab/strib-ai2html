@@ -23,9 +23,11 @@
   },
   "homepage": "https://github.com/striblab/strib-ai2html#readme",
   "dependencies": {
+    "chalk": "^2.4.1",
     "console.table": "^0.10.0",
     "debug": "^4.0.1",
     "font-manager": "^0.3.0",
+    "inquirer": "^6.2.0",
     "json5": "^2.0.1",
     "lodash": "^4.17.11",
     "request": "^2.88.0",
