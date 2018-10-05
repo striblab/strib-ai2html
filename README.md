@@ -8,11 +8,25 @@ At the Star Tribune, the idea is that the produced file can be inserted into a C
 
 ## Setup
 
-### Fonts
+### Install fonts
 
-Star Tribune uses specific fonts. Unfortunately how the fonts are names on your desktop may be different depending on what operating system you are using, what version, or just how you installed it.
+We will need at least the Star Tribune web fonts for `ai2html` to generate correctly, and if you are converting print graphics, you will also want the Star Tribune print fonts. You will have to install fonts manually. Get the fonts from the Design department.
 
-...
+On a Mac:
+
+1. Open your local Font library folder.
+   - This is a hidden folder, so it may be easier to do it on the command line with: `open ~/Library/Fonts`
+1. Copy or drag fonts into this folder.
+
+On Windows:
+
+1. _TODO_
+
+Use the following command to check if all the correct web fonts are installed:
+
+```
+strib-ai2html fonts --check
+```
 
 ### Generate
 
@@ -22,4 +36,6 @@ To help deal with our specific configuration and to use the latest version of `a
 
 ### Install ai2html in Illustrator
 
-`ai2html` runs as a script/preset in Illustrator. We have to
+`ai2html` runs as a script/preset in Illustrator. We can use our tool to install it:
+
+...
