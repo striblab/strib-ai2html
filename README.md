@@ -32,10 +32,14 @@ strib-ai2html fonts --check
 
 To help deal with our specific configuration and to use the latest version of `ai2html`, we generator the Illustrator script.
 
-...
+```
+strib-ai2html generate
+```
 
 ### Install ai2html in Illustrator
 
 `ai2html` runs as a script/preset in Illustrator. We can use our tool to install it:
 
-...
+```
+strib-ai2html install
+```
