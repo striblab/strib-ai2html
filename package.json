@@ -29,6 +29,7 @@
     "escodegen": "^1.11.0",
     "esprima": "^4.0.1",
     "font-manager": "^0.3.0",
+    "fs-extra": "^7.0.0",
     "glob": "^7.1.3",
     "inquirer": "^6.2.0",
     "json5": "^2.0.1",

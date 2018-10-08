@@ -52,7 +52,10 @@ async function main(argv, noTitle = false) {
 
   try {
     output.out('Generating ...');
-    await generate(argv);
+    let { outputPath } = await generate(argv);
+    output.out(
+      `Created script file in the following location: \n ${outputPath}`
+    );
     output.done();
   }
   catch (e) {
