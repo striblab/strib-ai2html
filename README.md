@@ -45,4 +45,5 @@ At the Star Tribune, the idea is that the produced file can be inserted into a C
 
 It is suggested to use the following template file:
 
-_TODO_
+- `templates/strib-digital-template.ai`: ??
+- `templates/strib-digitial-template.ait`: ??
