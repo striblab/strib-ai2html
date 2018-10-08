@@ -279,7 +279,7 @@
     notes: "If you put a url in this field, an <a> tag will be added, wrapping around the output and pointing to that url."
   },
   testing_mode: {
-    defaultValue: "yes",
+    defaultValue: "no",
     includeInSettingsBlock: true,
     includeInConfigFile: false,
     useQuoteMarksInConfigFile: false,

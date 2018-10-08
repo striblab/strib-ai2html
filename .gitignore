@@ -2,6 +2,8 @@
 .awspublish*
 .cache*
 build/*
+examples/*
+!examples/*.ai
 
 
 # Common

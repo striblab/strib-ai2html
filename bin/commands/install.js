@@ -47,7 +47,7 @@ exports.handler = async argv => {
   // Check if writable
   if (!install.canWrite(installPaths[0])) {
     output.exit(
-      `Unable to write script to following location, maybe you have to be an administrator: ${
+      `Unable to write script to following location, maybe you have to be an administrator (and possibly use "sudo"): \n ${
         installPaths[0]
       }`
     );

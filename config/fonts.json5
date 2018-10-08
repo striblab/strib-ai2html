@@ -64,7 +64,11 @@
   {
     name: "Popular light",
     system_search: "^popular.*bold$",
-    known_postscript_names: ["Popular-light", "PopulistDisplay-Light"],
+    known_postscript_names: [
+      "Popular-light",
+      "Popular-Light",
+      "PopulistDisplay-Light"
+    ],
     family: "'Popular Light',Helvetica,Arial,sans-serif",
     weight: "300",
     style: ""
