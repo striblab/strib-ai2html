@@ -32,29 +32,55 @@ exports.handler = async argv => {
   // Check build file
   if (!install.hasBuildFile()) {
     output.exit(
-      'Unable to find the generated file, try running `strib-ai2html generate` first.'
+      'Unable to find the generated build file, try running `strib-ai2html generate` first.'
     );
   }
 
   // Try to find an install place
-  let installPaths = install.findPaths();
-  if (!installPaths || !installPaths[0]) {
+  let installScriptPaths = install.findGlobsPaths(install.installScriptGlobs);
+  if (!installScriptPaths || !installScriptPaths[0]) {
     output.exit(
-      'Unable to find a place to install script, make sure Illustrator is installed, or use --install option.'
+      'Unable to find a place to install script, make sure Illustrator is installed.'
     );
   }
 
   // Check if writable
-  if (!install.canWrite(installPaths[0])) {
+  if (!install.canWrite(installScriptPaths[0])) {
     output.exit(
       `Unable to write script to following location, maybe you have to be an administrator (and possibly use "sudo"): \n ${
-        installPaths[0]
+        installScriptPaths[0]
       }`
     );
   }
 
   // Install
-  install.install(installPaths[0]);
+  install.installScript(installScriptPaths[0]);
+  output.out(`Installed ai2html script in: ${installScriptPaths[0]}`);
+
+  // Try to find template place
+  let installTemplatePaths = install.findGlobsPaths(
+    install.installTemplateGlobs
+  );
+  if (!installTemplatePaths || !installTemplatePaths[0]) {
+    output.exit(
+      'Unable to find a place to install templates, make sure Illustrator is installed.'
+    );
+  }
+
+  // Check if writable
+  if (!install.canWrite(installTemplatePaths[0])) {
+    output.exit(
+      `Unable to write templates to following location, maybe you have to be an administrator (and possibly use "sudo"): \n ${
+        installTemplatePaths[0]
+      }`
+    );
+  }
+
+  // Install
+  let t = install.installTemplates(installTemplatePaths[0]);
+  output.out(
+    `Installed ${t.length} template(s) in: ${installTemplatePaths[0]}`
+  );
 
   output.done();
 };

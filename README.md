@@ -10,8 +10,10 @@ Helpful instructions, setup, and config for using [ai2html](http://ai2html.org/)
 
 This project provides a command line tool to help manage and install `ai2html` specific to the Star Tribune. You will need to have [NodeJS](https://nodejs.org/en/) installed. For Windows users, it's best to use the NodeJS prompt application that gets installed
 
-- The best way to run the tool is with `npx` (which comes with NodeJS and `npm`). For example: `npx @striblab/strib-ai2html --help`
-- Though not ideal, as `npx` provides an up-to-date experience, you can permamently install it with: `npm install @striblab/strib-ai2html -g`
+- Install tool globally: `npm install @striblab/strib-ai2html -g`
+  - To update, run the same command.
+
+_Note: In theory this tool could be used with `npx`, but doing that causes some odd errors. TODO: Revisit as `npx` allows users to use the newest version of the tool._
 
 ### Fonts
 
@@ -29,14 +31,14 @@ On Windows:
 
 If you want to manually check if the web fonts can be found on your system, use the following command:
 
-`npx @striblab/strib-ai2html fonts --check`
+`strib-ai2html fonts --check`
 
 ### Generate and update
 
 The following is good to do on a regular basis.
 
-1. Generate the custom `ai2html` script: `npx @striblab/strib-ai2html generate`
-1. Install the custom `ai2html` script into Illustrator: `npx @striblab/strib-ai2html install`
+1. Generate the custom `ai2html` script: `strib-ai2html generate`
+1. Install the custom `ai2html` script into Illustrator: `strib-ai2html install`
    - More than likely you will need to be an administrator to run this, and may have to prefix the comand with `sudo`.
 
 ## Using ai2html
