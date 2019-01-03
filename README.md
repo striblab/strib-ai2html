@@ -56,8 +56,8 @@ An Illustrator project that is going to use `ai2html` should be structured like 
 ```
 PROJECT-NAME/
   PROJECT-NAME.ai
-  PROJECT-NAME.tempalate-preview.html
   ai2html-config.json
+  ai2html-preview-template.html
 ```
 
 When `ai2html` is run, you will end up with output similar to the following depending on certain options:
@@ -72,7 +72,7 @@ PROJECT-NAME/
     PROJECT-NAME.preview.html  <-- Full, embeddable HTML version based from preview template
   PROJECT-NAME-promo.png
   PROJECT-NAME.ai
-  PROJECT-NAME.tempalate-preview.html
+  ai2html-preview-template.html
 ```
 
 ### Settings
@@ -104,4 +104,6 @@ See the [artboards section](http://ai2html.org/#artboards-palette) on the `ai2ht
 
 ## Testing
 
-A manual test can be found in `tests/manual/`. Use Illustrator to run `ai2html`, then run a web server to see it embedded, such as `python -m SimpleHTTPServer`.
+### Manual
+
+A manual test can be found in `tests/manual/simple-project/`. Use Illustrator to open `simple-project.ai` and run `ai2html` to output. Then run a web server to see it embedded, such as `http-server tests/manual/` and go to `http://localhost:8080/embed-test.html` in your browser.

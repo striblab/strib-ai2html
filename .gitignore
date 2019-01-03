@@ -4,7 +4,9 @@
 build/*
 examples/*
 !examples/*.ai
-
+tests/**/ai2html-output
+tests/**/ai2html-output/*
+tests/**/*promo*
 
 # Common
 .vscode

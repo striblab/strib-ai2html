@@ -23,7 +23,7 @@
   cache_bust_token: null,
   create_config_file: false,
   config_file_path: "",
-  local_preview_template: "",
+  local_preview_template: "ai2html-preview-template.html",
   png_transparent: false,
   // Number of colors in 8-bit PNG image (1-256)
   png_number_of_colors: 128,
@@ -31,9 +31,12 @@
   center_html_output: true,
   use_2x_images_if_possible: true,
   use_lazy_loader: false,
-  include_resizer_css_js: true,
+  // This looks to be specific to nyt
+  include_resizer_css_js: false,
+  // Unsure what these 2 do speicifcally
   include_resizer_classes: true,
   include_resizer_widths: true,
+  // This should be turned off if used as a fragment
   include_resizer_script: true,
   // Embed background image SVG in HTML instead of loading a file
   inline_svg: false,
@@ -56,12 +59,12 @@
 
   // List of settings to include in the "ai2html-settings" text block
   settings_block: [
-    "settings_version",
+    "create_promo_image",
     "image_format",
     "responsiveness",
     "output",
+    "testing_mode",
     "html_output_path",
-    "html_output_extension",
     "image_output_path",
     "local_preview_template",
     "png_number_of_colors",
@@ -70,7 +73,9 @@
     "leadin",
     "notes",
     "sources",
-    "credit"
+    "credit",
+    "include_resizer_script",
+    "clickable_link"
   ],
 
   // list of settings to include in the config.yml file
