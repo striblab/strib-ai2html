@@ -56,9 +56,11 @@ An Illustrator project that is going to use `ai2html` should be structured like 
 ```
 PROJECT-NAME/
   PROJECT-NAME.ai
-  ai2html-config.json
-  ai2html-preview-template.html
+  ai2html-config.json  <-- Optional
+  ai2html-preview-template.html  <-- Optional, if you are not creating a full HTML version for embedding/iframe
 ```
+
+You can see an example in `tests/manual/simple-project/`. You can get the [ai2html-preview-template.html here](https://github.com/striblab/strib-ai2html/blob/master/templates/ai2html-preview-template.html).
 
 When `ai2html` is run, you will end up with output similar to the following depending on certain options:
 
