@@ -10,10 +10,20 @@ Helpful instructions, setup, and config for using [ai2html](http://ai2html.org/)
 
 This project provides a command line tool to help manage and install `ai2html` specific to the Star Tribune. You will need to have [NodeJS](https://nodejs.org/en/) installed. For Windows users, it's best to use the NodeJS prompt application that gets installed
 
-- Install tool globally: `npm install @striblab/strib-ai2html -g`
-  - To update, run the same command.
+1. Install tool globally: `npm install @striblab/strib-ai2html -g`
+
+- To update, run the same command.
 
 _Note: In theory this tool could be used with `npx`, but doing that causes some odd errors. TODO: Revisit as `npx` allows users to use the newest version of the tool._
+
+### Script and templates
+
+Run the following to compile and install the `ai2html` script and config, as well as the Strib template:
+
+1. Run: `strib-ai2html install`
+   - More than likely you will need to be an administrator to run this, and may have to prefix the comand with `sudo`.
+
+If you run into font checking issues, see the _Fonts_ section below.
 
 ### Fonts
 
@@ -33,19 +43,65 @@ If you want to manually check if the web fonts can be found on your system, use 
 
 `strib-ai2html fonts --check`
 
-### Generate and update
-
-The following is good to do on a regular basis.
-
-1. Generate the custom `ai2html` script: `strib-ai2html generate`
-1. Install the custom `ai2html` script into Illustrator: `strib-ai2html install`
-   - More than likely you will need to be an administrator to run this, and may have to prefix the comand with `sudo`.
-
 ## Using ai2html
 
 At the Star Tribune, the idea is that the produced file can be inserted into a Clickability article via an iframe via a [strib-tag](http://static.startribune.com/news/tools/embed-it/). It can fit inside the 525px standard middle column or you can hide the right column of the article and run it at 853px. It also has a version for mobile at 300px. Those are the 3 responsive sizes built into the template.
 
-It is suggested to use the following template file:
+The `strib-ai2html install` command will install the templates found in `templates/` into Illustrator. This means, you can do `File > New From Template` in Illustrator.
 
-- `templates/strib-digital-template.ai`: ??
-- `templates/strib-digitial-template.ait`: ??
+### Project structure
+
+An Illustrator project that is going to use `ai2html` should be structured like the following, where `PROJECT-NAME` should change based on your project, such as `dancing-robots`:
+
+```
+PROJECT-NAME/
+  PROJECT-NAME.ai
+  PROJECT-NAME.tempalate-preview.html
+  ai2html-config.json
+```
+
+When `ai2html` is run, you will end up with output similar to the following depending on certain options:
+
+```
+PROJECT-NAME/
+  ai2html-output/
+    PROJECT-NAME-mobile.png
+    PROJECT-NAME-regular.png
+    PROJECT-NAME-wide.png
+    PROJECT-NAME.html  <-- HTML fragment version
+    PROJECT-NAME.preview.html  <-- Full, embeddable HTML version based from preview template
+  PROJECT-NAME-promo.png
+  PROJECT-NAME.ai
+  PROJECT-NAME.tempalate-preview.html
+```
+
+### Settings
+
+One of the main goals of this Strib-specific projects is to set some of the settings by default. `ai2html` has many [settings](http://ai2html.org/#settings). And there are a few ways to manage settings.
+
+Often, you may not need to update any settings.
+
+#### Config file
+
+You can create an `ai2html-config.json` file next your Illustrator file. This is the preferred way, but not necessary. This will override any of the settings that we installed with this project.
+
+#### Text block
+
+`ai2html` will read specifically-named text blocks in your Illustrator file; these are just blocks of texts with a certain first line. If you include a `ai2html-settings` block, `ai2html` will attempt to read these as settings. The text block may look something like the following:
+
+```
+ai2html-settings
+create_promo_image: yes
+image_format: auto
+responsiveness: dynamic
+```
+
+Lines that can't be parsed, such as `// comments` will show a warning but will not affect the output.
+
+### Artboards
+
+See the [artboards section](http://ai2html.org/#artboards-palette) on the `ai2html` page for more details. The template provided here has Strib standard size artboard provided.
+
+## Testing
+
+A manual test can be found in `tests/manual/`. Use Illustrator to run `ai2html`, then run a web server to see it embedded, such as `python -m SimpleHTTPServer`.

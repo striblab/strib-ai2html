@@ -1,0 +1,84 @@
+{
+  // Inserted manually
+  //"settings_version": scriptVersion,
+  create_promo_image: true,
+  promo_image_width: 1024,
+  // Options: auto, png, png24, jpg, svg
+  image_format: ["auto"],
+  write_image_files: true,
+  // Options: fixed, dynamic
+  responsiveness: "dynamic",
+  max_width: "",
+  // Options: one-file, multiple-files
+  output: "one-file",
+  // Defaults to the name of the AI file
+  project_name: "",
+  project_type: "",
+  html_output_path: "/ai2html-output/",
+  html_output_extension: ".html",
+  image_output_path: "",
+  image_source_path: null,
+  image_alt_text: "",
+  // Append a token to the url of image urls: ?v=<cache_bust_token>
+  cache_bust_token: null,
+  create_config_file: false,
+  config_file_path: "",
+  local_preview_template: "",
+  png_transparent: false,
+  // Number of colors in 8-bit PNG image (1-256)
+  png_number_of_colors: 128,
+  jpg_quality: 75,
+  center_html_output: true,
+  use_2x_images_if_possible: true,
+  use_lazy_loader: false,
+  include_resizer_css_js: true,
+  include_resizer_classes: true,
+  include_resizer_widths: true,
+  include_resizer_script: true,
+  // Embed background image SVG in HTML instead of loading a file
+  inline_svg: false,
+  // Prefix SVG ids with a string to disambiguate from other ids on the page
+  svg_id_prefix: "",
+  svg_embed_images: false,
+  render_rotated_skewed_text_as: "html", // Options: html, image
+  show_completion_dialog_box: true,
+  // Add a URL to make the entire graphic a clickable link
+  clickable_link: "",
+  // Render text in bg image to test HTML text placement
+  testing_mode: false,
+  last_updated_text: "",
+  headline: "",
+  leadin: "",
+  summary: "",
+  notes: "",
+  sources: "",
+  credit: "",
+
+  // List of settings to include in the "ai2html-settings" text block
+  settings_block: [
+    "settings_version",
+    "image_format",
+    "responsiveness",
+    "output",
+    "html_output_path",
+    "html_output_extension",
+    "image_output_path",
+    "local_preview_template",
+    "png_number_of_colors",
+    "jpg_quality",
+    "headline",
+    "leadin",
+    "notes",
+    "sources",
+    "credit"
+  ],
+
+  // list of settings to include in the config.yml file
+  config_file: ["headline", "leadin", "summary", "notes", "sources", "credit"],
+
+  // Generated separately
+  fonts: [
+    // Example
+    // {"aifont":"ArialMT","family":"arial,helvetica,sans-serif","weight":"","style":""},
+  ]
+}

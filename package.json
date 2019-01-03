@@ -26,8 +26,6 @@
     "chalk": "^2.4.1",
     "console.table": "^0.10.0",
     "debug": "^4.0.1",
-    "escodegen": "^1.11.0",
-    "esprima": "^4.0.1",
     "font-manager": "^0.3.0",
     "fs-extra": "^7.0.0",
     "glob": "^7.1.3",

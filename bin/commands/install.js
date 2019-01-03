@@ -4,7 +4,8 @@
 
 // Dependencies
 const { CLIOutput } = require('../../lib/cli-output.js');
-const install = require('../../lib/install.js');
+const { Install } = require('../../lib/install.js');
+const errors = require('../../lib/errors.js');
 const debug = require('debug')('strib-ai2html:command:install');
 
 // Describe command use
@@ -21,66 +22,97 @@ exports.builder = yargs => {
     default: false
   });
 
+  yargs.options('ai2html-version', {
+    describe:
+      'Version of ai2html to use as base.  Overall, this should not be changed, as different versions may cause the script to break.',
+    type: 'string',
+    default: 'v0.81.4'
+  });
+
+  yargs.options('font-check', {
+    describe:
+      'Check for font or not.  Do not skip font check unless you know what you are doing.',
+    type: 'boolean',
+    default: true
+  });
+
+  yargs.options('illustrator-scripts', {
+    describe:
+      'Illustrator script directory where strib-ai2html.js gets installed.  If not provided, will try to automatlly figure it out.',
+    type: 'path'
+  });
+
+  yargs.options('illustrator-templates', {
+    describe:
+      'Illustrator template directory where strib-ai2html templates gets installed.  If not provided, will try to automatlly figure it out.',
+    type: 'path'
+  });
+
   return yargs;
 };
 
 // Fonts
-exports.handler = async argv => {
+async function main(argv, noTitle = false) {
+  // Setupt output
   let output = new CLIOutput();
-  output.intro('Install');
-
-  // Check build file
-  if (!install.hasBuildFile()) {
-    output.exit(
-      'Unable to find the generated build file, try running `strib-ai2html generate` first.'
-    );
-  }
-
-  // Try to find an install place
-  let installScriptPaths = install.findGlobsPaths(install.installScriptGlobs);
-  if (!installScriptPaths || !installScriptPaths[0]) {
-    output.exit(
-      'Unable to find a place to install script, make sure Illustrator is installed.'
-    );
-  }
-
-  // Check if writable
-  if (!install.canWrite(installScriptPaths[0])) {
-    output.exit(
-      `Unable to write script to following location, maybe you have to be an administrator (and possibly use "sudo"): \n ${
-        installScriptPaths[0]
-      }`
-    );
+  if (!noTitle) {
+    output.intro('Install');
   }
 
   // Install
-  install.installScript(installScriptPaths[0]);
-  output.out(`Installed ai2html script in: ${installScriptPaths[0]}`);
+  let i = new Install(argv);
 
-  // Try to find template place
-  let installTemplatePaths = install.findGlobsPaths(
-    install.installTemplateGlobs
-  );
-  if (!installTemplatePaths || !installTemplatePaths[0]) {
-    output.exit(
-      'Unable to find a place to install templates, make sure Illustrator is installed.'
-    );
+  // Try to compile, including font-check
+  try {
+    await i.compile();
+  }
+  catch (e) {
+    // Handle font check error
+    if (e.id === errors.fontCheck) {
+      let fontIssues = _.map(_.filter(e.data, set => !set.found), 'name').join(
+        ', '
+      );
+
+      output.error(`${e.message}
+        Unable to find the following fonts: ${fontIssues}`);
+
+      // Prompt to override
+      return inquirer
+        .prompt({
+          name: 'skipFontCheck',
+          message: `${
+            output.indent
+          }Do you wish to continue anyway?  This may lead to fonts not exported correctly when using ai2html`,
+          type: 'confirm',
+          default: false
+        })
+        .then(answers => {
+          if (answers.skipFontCheck) {
+            argv.fontCheck = false;
+            return main(argv, true);
+          }
+
+          output.exit('Did not install ai2html.');
+        });
+    }
+    else {
+      output.error(e);
+      output.exit('Did not install ai2html.');
+    }
   }
 
-  // Check if writable
-  if (!install.canWrite(installTemplatePaths[0])) {
-    output.exit(
-      `Unable to write templates to following location, maybe you have to be an administrator (and possibly use "sudo"): \n ${
-        installTemplatePaths[0]
-      }`
-    );
+  // Install (move files);
+  try {
+    let { templates, scripts } = await i.install();
+    output.out(`Scripts written: \n${scripts.join('\n')}`);
+    output.out(`Templates written: \n${templates.join('\n')}`);
   }
-
-  // Install
-  let t = install.installTemplates(installTemplatePaths[0]);
-  output.out(
-    `Installed ${t.length} template(s) in: ${installTemplatePaths[0]}`
-  );
+  catch (e) {
+    output.error(e);
+    output.exit('Did not install ai2html.');
+  }
 
   output.done();
-};
+}
+
+exports.handler = main;
