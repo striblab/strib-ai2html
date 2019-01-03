@@ -1,6 +1,6 @@
 {
   "name": "@striblab/strib-ai2html",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Helpful instructions, setup, and config for using ai2html",
   "main": "lib/index.js",
   "bin": {
